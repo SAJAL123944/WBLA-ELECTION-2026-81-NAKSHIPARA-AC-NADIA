@@ -585,4 +585,33 @@
         });
         </script>        
     </body>
+	<!-- 1. Leaflet Routing Machine Plugin Links -->
+<link rel="stylesheet" href="https://unpkg.com" />
+<script src="https://unpkg.com"></script>
+
+<!-- 2. Point-to-Point Routing Script -->
+<script>
+var routingControl = L.Routing.control({
+    waypoints: [], 
+    routeWhileDragging: true,
+    show: true
+}).addTo(map);
+
+// Click anywhere on the map to find the shortest route
+map.on('click', function(e) {
+    var currentWaypoints = routingControl.getWaypoints();
+    
+    if (!currentWaypoints[0] || !currentWaypoints[0].latLng) {
+        // First click sets the Start Point
+        routingControl.spliceWaypoints(0, 1, e.latlng);
+    } else if (!currentWaypoints[1] || !currentWaypoints[1].latLng) {
+        // Second click sets the End Point and displays the shortest route
+        routingControl.spliceWaypoints(1, 1, e.latlng);
+    } else {
+        // Third click clears previous pins and starts a brand new route
+        routingControl.setWaypoints([e.latlng]);
+    }
+});
+</script>
+
 </html>
