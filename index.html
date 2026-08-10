@@ -26,7 +26,6 @@
 		<style>
 .leaflet-control-attribution, .qgis2web-attribution { display: none !important; }
 </style>
-
     </head>
     <body>
         <div id="map">
@@ -54,7 +53,6 @@
         var highlightLayer;
         function highlightFeature(e) {
             highlightLayer = e.target;
-
             if (e.target.feature.geometry.type === 'LineString' || e.target.feature.geometry.type === 'MultiLineString') {
               highlightLayer.setStyle({
                 color: 'rgba(255, 255, 0, 1.00)',
@@ -588,5 +586,34 @@
             resetLabels([layer_81_POLLING_STATION_4,layer_SECTOR_OFFICE_5]);
        });	
 </script>
+		<!-- 1. Leaflet Routing Machine Plugin Links -->
+<link rel="stylesheet" href="https://unpkg.com" />
+<script src="https://unpkg.com"></script>
+
+<!-- 2. Point-to-Point Routing Script -->
+<script>
+var routingControl = L.Routing.control({
+    waypoints: [], 
+    routeWhileDragging: true,
+    show: true
+}).addTo(map);
+
+// Click map to find the shortest route between points
+map.on('click', function(e) {
+    var currentWaypoints = routingControl.getWaypoints();
+    
+    if (!currentWaypoints[0] || !currentWaypoints[0].latLng) {
+        // First click sets the Start Point
+        routingControl.spliceWaypoints(0, 1, e.latlng);
+    } else if (!currentWaypoints[1] || !currentWaypoints[1].latLng) {
+        // Second click sets the End Point and shows the route
+        routingControl.spliceWaypoints(1, 1, e.latlng);
+    } else {
+        // Third click clears the map and starts a fresh new route
+        routingControl.setWaypoints([e.latlng]);
+    }
+});
+</script>
+
     </body>
 </html>
