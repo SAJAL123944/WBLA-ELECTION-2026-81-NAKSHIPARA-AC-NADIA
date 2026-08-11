@@ -595,15 +595,17 @@
   var css = u + 'leaflet-routing-machine.css';
   var js = u + 'leaflet-routing-machine.js';
 
- var linkTag = document.createElement('link');
-linkTag.rel = 'stylesheet';
-linkTag.href = css;
-document.head.appendChild(linkTag);
-
+  var linkTag = document.createElement('link');
+  linkTag.rel = 'stylesheet';
+  linkTag.href = css;
+  document.head.appendChild(linkTag);
 
   var s = document.createElement('script');
   s.src = js;
   s.onload = function() {
+    // Magic Line: This makes both setWaypoints and setwaypoints work automatically!
+    L.Routing.Control.prototype.setwaypoints = L.Routing.Control.prototype.setWaypoints;
+
     var r = L.Routing.control({
       waypoints: [],
       routeWhileDragging: true
@@ -617,10 +619,13 @@ document.head.appendChild(linkTag);
       } else {
         p = [e.latlng];
       }
-      r.setWaypoints(p);
+      r.setwaypoints(p);
     });
   };
   document.head.appendChild(s);
+</script>
+
+
 </script>
 
 
