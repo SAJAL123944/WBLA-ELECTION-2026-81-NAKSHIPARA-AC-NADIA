@@ -588,42 +588,38 @@
 .leaflet-control-attribution { display: none !important; }
 </style>
 <script>
-  var u = 'https://unpkg.com';
-  u += 'leaflet-routing-';
-  u += 'machine@latest/dist/';
+  // 1. Dynamic Asset Loading
+  var routeURL = 'https://unpkg.com';
   
-  var css = u + 'leaflet-routing-machine.css';
-  var js = u + 'leaflet-routing-machine.js';
+  var style = document.createElement('link');
+  style.rel = 'stylesheet';
+  style.href = routeURL + 'leaflet-routing-machine.css';
+  document.head.appendChild(style);
 
-  var linkTag = document.createElement('link');
-  linkTag.rel = 'stylesheet';
-  linkTag.href = css;
-  document.head.appendChild(linkTag);
-
-  var s = document.createElement('script');
-  s.src = js;
-  s.onload = function() {
-    // Magic Line: This makes both setWaypoints and setwaypoints work automatically!
-    L.Routing.Control.prototype.setwaypoints = L.Routing.Control.prototype.setWaypoints;
-
-    var r = L.Routing.control({
+  var script = document.createElement('script');
+  script.src = routeURL + 'leaflet-routing-machine.js';
+  
+  // 2. Direct Core Engine Run
+  script.onload = function() {
+    var routeControl = window.L.Routing.control({
       waypoints: [],
       routeWhileDragging: true
-    }).addTo(map);
+    }).addTo(window.map || map);
 
-    var p = [];
+    var pointsArray = [];
 
-    map.on('click', function(e) {
-      if (p.length < 2) {
-        p.push(e.latlng);
+    (window.map || map).on('click', function(e) {
+      if (pointsArray.length < 2) {
+        pointsArray.push(e.latlng);
       } else {
-        p = [e.latlng];
+        pointsArray = [e.latlng];
       }
-      r.setwaypoints(p);
+      routeControl.setWaypoints(pointsArray);
     });
   };
-  document.head.appendChild(s);
+  document.head.appendChild(script);
 </script>
+
 
 
 </script>
