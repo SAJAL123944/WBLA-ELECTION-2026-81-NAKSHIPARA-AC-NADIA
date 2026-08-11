@@ -42,10 +42,10 @@
         <script src="js/leaflet.photon.js"></script>
         <script src="js/leaflet-measure.js"></script>
         <script src="js/leaflet-search.js"></script>
-        <script src="data/81_AC_GP_2.js"></script>
-        <script src="data/81ACBOUNDARY_3.js"></script>
-        <script src="data/81_POLLING_STATION_4.js"></script>
-        <script src="data/SECTOR_OFFICE_5.js"></script>
+        <script src="data/81_AC_GP_3.js"></script>
+        <script src="data/81ACBOUNDARY_4.js"></script>
+        <script src="data/81_POLLING_STATION_5.js"></script>
+        <script src="data/SECTOR_OFFICE_6.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -65,7 +65,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[23.503679304922755,88.24583353378532],[23.69495789196825,88.48352365078532]]);
+        }).fitBounds([[23.519239666170503,88.24583353378532],[23.679397530720504,88.48352365078532]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/qgis2web/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -168,29 +168,42 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_GoogleSatellite_0');
-        map.getPane('pane_GoogleSatellite_0').style.zIndex = 400;
-        var layer_GoogleSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleSatellite_0',
+        map.createPane('pane_OSMStandard_0');
+        map.getPane('pane_OSMStandard_0').style.zIndex = 400;
+        var layer_OSMStandard_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OSMStandard_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OSMStandard_0;
+        map.addLayer(layer_OSMStandard_0);
+        map.createPane('pane_GoogleSatellite_1');
+        map.getPane('pane_GoogleSatellite_1').style.zIndex = 401;
+        var layer_GoogleSatellite_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatellite_1',
             opacity: 1.0,
             attribution: '',
             minZoom: 1,
             maxZoom: 28,
         });
-        layer_GoogleSatellite_0;
-        map.addLayer(layer_GoogleSatellite_0);
-        map.createPane('pane_GoogleMaps_1');
-        map.getPane('pane_GoogleMaps_1').style.zIndex = 401;
-        var layer_GoogleMaps_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleMaps_1',
+        layer_GoogleSatellite_1;
+        map.addLayer(layer_GoogleSatellite_1);
+        map.createPane('pane_GoogleMaps_2');
+        map.getPane('pane_GoogleMaps_2').style.zIndex = 402;
+        var layer_GoogleMaps_2 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleMaps_2',
             opacity: 1.0,
             attribution: '',
             minZoom: 1,
             maxZoom: 28,
         });
-        layer_GoogleMaps_1;
-        map.addLayer(layer_GoogleMaps_1);
-        function pop_81_AC_GP_2(feature, layer) {
+        layer_GoogleMaps_2;
+        map.addLayer(layer_GoogleMaps_2);
+        function pop_81_AC_GP_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -228,9 +241,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_81_AC_GP_2_0() {
+        function style_81_AC_GP_3_0() {
             return {
-                pane: 'pane_81_AC_GP_2',
+                pane: 'pane_81_AC_GP_3',
                 opacity: 1,
                 color: 'rgba(227,26,28,1.0)',
                 dashArray: '12.0,6.0',
@@ -241,21 +254,21 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_81_AC_GP_2');
-        map.getPane('pane_81_AC_GP_2').style.zIndex = 402;
-        map.getPane('pane_81_AC_GP_2').style['mix-blend-mode'] = 'normal';
-        var layer_81_AC_GP_2 = new L.geoJson(json_81_AC_GP_2, {
+        map.createPane('pane_81_AC_GP_3');
+        map.getPane('pane_81_AC_GP_3').style.zIndex = 403;
+        map.getPane('pane_81_AC_GP_3').style['mix-blend-mode'] = 'normal';
+        var layer_81_AC_GP_3 = new L.geoJson(json_81_AC_GP_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_81_AC_GP_2',
-            layerName: 'layer_81_AC_GP_2',
-            pane: 'pane_81_AC_GP_2',
-            onEachFeature: pop_81_AC_GP_2,
-            style: style_81_AC_GP_2_0,
+            dataVar: 'json_81_AC_GP_3',
+            layerName: 'layer_81_AC_GP_3',
+            pane: 'pane_81_AC_GP_3',
+            onEachFeature: pop_81_AC_GP_3,
+            style: style_81_AC_GP_3_0,
         });
-        bounds_group.addLayer(layer_81_AC_GP_2);
-        map.addLayer(layer_81_AC_GP_2);
-        function pop_81ACBOUNDARY_3(feature, layer) {
+        bounds_group.addLayer(layer_81_AC_GP_3);
+        map.addLayer(layer_81_AC_GP_3);
+        function pop_81ACBOUNDARY_4(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -294,9 +307,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_81ACBOUNDARY_3_0() {
+        function style_81ACBOUNDARY_4_0() {
             return {
-                pane: 'pane_81ACBOUNDARY_3',
+                pane: 'pane_81ACBOUNDARY_4',
                 opacity: 1,
                 color: 'rgba(50,50,226,1.0)',
                 dashArray: '12.0,6.0,3.0,6.0,3.0,6.0',
@@ -307,21 +320,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_81ACBOUNDARY_3');
-        map.getPane('pane_81ACBOUNDARY_3').style.zIndex = 403;
-        map.getPane('pane_81ACBOUNDARY_3').style['mix-blend-mode'] = 'normal';
-        var layer_81ACBOUNDARY_3 = new L.geoJson(json_81ACBOUNDARY_3, {
+        map.createPane('pane_81ACBOUNDARY_4');
+        map.getPane('pane_81ACBOUNDARY_4').style.zIndex = 404;
+        map.getPane('pane_81ACBOUNDARY_4').style['mix-blend-mode'] = 'normal';
+        var layer_81ACBOUNDARY_4 = new L.geoJson(json_81ACBOUNDARY_4, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_81ACBOUNDARY_3',
-            layerName: 'layer_81ACBOUNDARY_3',
-            pane: 'pane_81ACBOUNDARY_3',
-            onEachFeature: pop_81ACBOUNDARY_3,
-            style: style_81ACBOUNDARY_3_0,
+            dataVar: 'json_81ACBOUNDARY_4',
+            layerName: 'layer_81ACBOUNDARY_4',
+            pane: 'pane_81ACBOUNDARY_4',
+            onEachFeature: pop_81ACBOUNDARY_4,
+            style: style_81ACBOUNDARY_4_0,
         });
-        bounds_group.addLayer(layer_81ACBOUNDARY_3);
-        map.addLayer(layer_81ACBOUNDARY_3);
-        function pop_81_POLLING_STATION_4(feature, layer) {
+        bounds_group.addLayer(layer_81ACBOUNDARY_4);
+        map.addLayer(layer_81ACBOUNDARY_4);
+        function pop_81_POLLING_STATION_5(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -403,9 +416,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_81_POLLING_STATION_4_0() {
+        function style_81_POLLING_STATION_5_0() {
             return {
-                pane: 'pane_81_POLLING_STATION_4',
+                pane: 'pane_81_POLLING_STATION_5',
                 radius: 8.0,
                 opacity: 1,
                 color: 'rgba(247,225,55,1.0)',
@@ -419,27 +432,27 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_81_POLLING_STATION_4');
-        map.getPane('pane_81_POLLING_STATION_4').style.zIndex = 404;
-        map.getPane('pane_81_POLLING_STATION_4').style['mix-blend-mode'] = 'normal';
-        var layer_81_POLLING_STATION_4 = new L.geoJson(json_81_POLLING_STATION_4, {
+        map.createPane('pane_81_POLLING_STATION_5');
+        map.getPane('pane_81_POLLING_STATION_5').style.zIndex = 405;
+        map.getPane('pane_81_POLLING_STATION_5').style['mix-blend-mode'] = 'normal';
+        var layer_81_POLLING_STATION_5 = new L.geoJson(json_81_POLLING_STATION_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_81_POLLING_STATION_4',
-            layerName: 'layer_81_POLLING_STATION_4',
-            pane: 'pane_81_POLLING_STATION_4',
-            onEachFeature: pop_81_POLLING_STATION_4,
+            dataVar: 'json_81_POLLING_STATION_5',
+            layerName: 'layer_81_POLLING_STATION_5',
+            pane: 'pane_81_POLLING_STATION_5',
+            onEachFeature: pop_81_POLLING_STATION_5,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_81_POLLING_STATION_4_0(feature));
+                return L.circleMarker(latlng, style_81_POLLING_STATION_5_0(feature));
             },
         });
-        bounds_group.addLayer(layer_81_POLLING_STATION_4);
-        map.addLayer(layer_81_POLLING_STATION_4);
-        function pop_SECTOR_OFFICE_5(feature, layer) {
+        bounds_group.addLayer(layer_81_POLLING_STATION_5);
+        map.addLayer(layer_81_POLLING_STATION_5);
+        function pop_SECTOR_OFFICE_6(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -482,9 +495,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_SECTOR_OFFICE_5_0() {
+        function style_SECTOR_OFFICE_6_0() {
             return {
-                pane: 'pane_SECTOR_OFFICE_5',
+                pane: 'pane_SECTOR_OFFICE_6',
                 shape: 'diamond',
                 radius: 8.8,
                 opacity: 1,
@@ -499,33 +512,34 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_SECTOR_OFFICE_5');
-        map.getPane('pane_SECTOR_OFFICE_5').style.zIndex = 405;
-        map.getPane('pane_SECTOR_OFFICE_5').style['mix-blend-mode'] = 'normal';
-        var layer_SECTOR_OFFICE_5 = new L.geoJson(json_SECTOR_OFFICE_5, {
+        map.createPane('pane_SECTOR_OFFICE_6');
+        map.getPane('pane_SECTOR_OFFICE_6').style.zIndex = 406;
+        map.getPane('pane_SECTOR_OFFICE_6').style['mix-blend-mode'] = 'normal';
+        var layer_SECTOR_OFFICE_6 = new L.geoJson(json_SECTOR_OFFICE_6, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_SECTOR_OFFICE_5',
-            layerName: 'layer_SECTOR_OFFICE_5',
-            pane: 'pane_SECTOR_OFFICE_5',
-            onEachFeature: pop_SECTOR_OFFICE_5,
+            dataVar: 'json_SECTOR_OFFICE_6',
+            layerName: 'layer_SECTOR_OFFICE_6',
+            pane: 'pane_SECTOR_OFFICE_6',
+            onEachFeature: pop_SECTOR_OFFICE_6,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_SECTOR_OFFICE_5_0(feature));
+                return L.shapeMarker(latlng, style_SECTOR_OFFICE_6_0(feature));
             },
         });
-        bounds_group.addLayer(layer_SECTOR_OFFICE_5);
-        map.addLayer(layer_SECTOR_OFFICE_5);
+        bounds_group.addLayer(layer_SECTOR_OFFICE_6);
+        map.addLayer(layer_SECTOR_OFFICE_6);
         var overlaysTree = [
-            {label: '<img src="legend/SECTOR_OFFICE_5.png" /> SECTOR_OFFICE', layer: layer_SECTOR_OFFICE_5},
-            {label: '<img src="legend/81_POLLING_STATION_4.png" /> 81_POLLING_STATION', layer: layer_81_POLLING_STATION_4},
-            {label: '<img src="legend/81ACBOUNDARY_3.png" /> 81ACBOUNDARY', layer: layer_81ACBOUNDARY_3},
-            {label: '<img src="legend/81_AC_GP_2.png" /> 81_AC_GP', layer: layer_81_AC_GP_2},
-            {label: "Google Maps", layer: layer_GoogleMaps_1},
-            {label: "Google Satellite", layer: layer_GoogleSatellite_0},]
+            {label: '<img src="legend/SECTOR_OFFICE_6.png" /> SECTOR_OFFICE', layer: layer_SECTOR_OFFICE_6},
+            {label: '<img src="legend/81_POLLING_STATION_5.png" /> 81_POLLING_STATION', layer: layer_81_POLLING_STATION_5},
+            {label: '<img src="legend/81ACBOUNDARY_4.png" /> 81ACBOUNDARY', layer: layer_81ACBOUNDARY_4},
+            {label: '<img src="legend/81_AC_GP_3.png" /> 81_AC_GP', layer: layer_81_AC_GP_3},
+            {label: "Google Maps", layer: layer_GoogleMaps_2},
+            {label: "Google Satellite", layer: layer_GoogleSatellite_1},
+            {label: "OSM Standard", layer: layer_OSMStandard_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
@@ -538,12 +552,12 @@
         lay.addTo(map);
         setBounds();
         var i = 0;
-        layer_81_POLLING_STATION_4.eachLayer(function(layer) {
+        layer_81_POLLING_STATION_5.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['PS_No'] !== null?String('<div style="color: #e31a1c; font-size: 10pt; font-family: \'Rockwell Extra Bold\', sans-serif;">' + layer.feature.properties['PS_No']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_81_POLLING_STATION_4'});
+            layer.bindTooltip((layer.feature.properties['PS_No'] !== null?String('<div style="color: #e31a1c; font-size: 10pt; font-weight: bold; font-family: \'Rockwell Extra Bold\', sans-serif;">' + layer.feature.properties['PS_No']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_81_POLLING_STATION_5'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -551,12 +565,12 @@
               i++;
         });
         var i = 0;
-        layer_SECTOR_OFFICE_5.eachLayer(function(layer) {
+        layer_SECTOR_OFFICE_6.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Sector_No_'] !== null?String('<div style="color: #3232e2; font-size: 10pt; font-family: \'Rockwell Extra Bold\', sans-serif;">' + layer.feature.properties['Sector_No_']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_SECTOR_OFFICE_5'});
+            layer.bindTooltip((layer.feature.properties['Sector_No_'] !== null?String('<div style="color: #3232e2; font-size: 10pt; font-weight: bold; font-family: \'Rockwell Extra Bold\', sans-serif;">' + layer.feature.properties['Sector_No_']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_SECTOR_OFFICE_6'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -564,7 +578,7 @@
               i++;
         });
         map.addControl(new L.Control.Search({
-            layer: layer_81_POLLING_STATION_4,
+            layer: layer_81_POLLING_STATION_5,
             initial: false,
             hideMarkerOnCollapse: true,
             propertyName: 'PS_No'}));
@@ -573,61 +587,16 @@
         } else {
             document.getElementsByClassName('search-button')[1].className += ' fa fa-binoculars';
         }
-        resetLabels([layer_81_POLLING_STATION_4,layer_SECTOR_OFFICE_5]);
+        resetLabels([layer_81_POLLING_STATION_5,layer_SECTOR_OFFICE_6]);
         map.on("zoomend", function(){
-            resetLabels([layer_81_POLLING_STATION_4,layer_SECTOR_OFFICE_5]);
+            resetLabels([layer_81_POLLING_STATION_5,layer_SECTOR_OFFICE_6]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_81_POLLING_STATION_4,layer_SECTOR_OFFICE_5]);
+            resetLabels([layer_81_POLLING_STATION_5,layer_SECTOR_OFFICE_6]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_81_POLLING_STATION_4,layer_SECTOR_OFFICE_5]);
+            resetLabels([layer_81_POLLING_STATION_5,layer_SECTOR_OFFICE_6]);
         });
-        </script>  
-		<style>
-.leaflet-control-attribution { display: none !important; }
-</style>
-<script>
-  // 1. Dynamic Asset Loading
-  var routeURL = 'https://unpkg.com';
-  
-  var style = document.createElement('link');
-  style.rel = 'stylesheet';
-  style.href = routeURL + 'leaflet-routing-machine.css';
-  document.head.appendChild(style);
-
-  var script = document.createElement('script');
-  script.src = routeURL + 'leaflet-routing-machine.js';
-  
-  // 2. Direct Core Engine Run
-  script.onload = function() {
-    var routeControl = window.L.Routing.control({
-      waypoints: [],
-      routeWhileDragging: true
-    }).addTo(window.map || map);
-
-    var pointsArray = [];
-
-    (window.map || map).on('click', function(e) {
-      if (pointsArray.length < 2) {
-        pointsArray.push(e.latlng);
-      } else {
-        pointsArray = [e.latlng];
-      }
-      routeControl.setWaypoints(pointsArray);
-    });
-  };
-  document.head.appendChild(script);
-</script>
-
-
-
-</script>
-
-
-
-
-
-
+        </script>        
     </body>
 </html>
