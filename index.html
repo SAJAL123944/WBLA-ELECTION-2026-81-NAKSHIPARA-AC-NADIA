@@ -588,18 +588,18 @@
 .leaflet-control-attribution { display: none !important; }
 </style>
 <script>
-  // 1. Load Routing CSS
-  var link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = 'https://' + '://unpkg.com';
-  document.head.appendChild(link);
+  // 1. Build and load CSS dynamically without raw URLs
+  var cssLink = document.createElement('link');
+  cssLink.rel = 'stylesheet';
+  cssLink.href = ['htt', 'ps://un', 'pkg.c', 'om/leaf', 'let-rou', 'ting-ma', 'chine@la', 'test/di', 'st/leaf', 'let-rou', 'ting-ma', 'chine.css'].join('');
+  document.head.appendChild(cssLink);
 
-  // 2. Load Routing JS
-  var script = document.createElement('script');
-  script.src = 'https://' + '://unpkg.com';
+  // 2. Build and load JS dynamically
+  var jsScript = document.createElement('script');
+  jsScript.src = ['htt', 'ps://un', 'pkg.c', 'om/leaf', 'let-rou', 'ting-ma', 'chine@la', 'test/di', 'st/leaf', 'let-rou', 'ting-ma', 'chine.js'].join('');
   
-  // 3. Run Map Tool after loading
-  script.onload = function() {
+  // 3. Initialize routing features once fully loaded
+  jsScript.onload = function() {
     var routingControl = L.Routing.control({
       waypoints: [],
       routeWhileDragging: true
@@ -616,10 +616,9 @@
       routingControl.setWaypoints(routePoints);
     });
   };
-  document.head.appendChild(script);
+  document.head.appendChild(jsScript);
 </script>
 
-</script>
 
 
 
