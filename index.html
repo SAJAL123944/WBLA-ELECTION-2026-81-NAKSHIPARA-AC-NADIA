@@ -587,6 +587,33 @@
 		<style>
 .leaflet-control-attribution { display: none !important; }
 </style>
+<!-- Leaflet Routing Machine CSS & JS -->
+<!-- Leaflet Routing Machine CSS & JS -->
+<link rel="stylesheet" href="https://unpkg.com" />
+<script src="https://unpkg.com"></script>
+
+<script>
+  // Initialize routing control
+  var routingControl = L.Routing.control({
+    waypoints: [],
+    routeWhileDragging: true
+  }).addTo(map);
+
+  // Array to store clicked points
+  var routePoints = [];
+
+  // Click event listener
+  map.on('click', function(e) {
+    if (routePoints.length < 2) {
+      routePoints.push(e.latlng); // Add point
+    } else {
+      routePoints = [e.latlng]; // Reset with new first point
+    }
+    routingControl.setWaypoints(routePoints);
+  });
+</script>
+
+
 
     </body>
 </html>
