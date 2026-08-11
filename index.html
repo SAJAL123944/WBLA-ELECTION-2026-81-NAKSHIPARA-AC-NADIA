@@ -587,30 +587,38 @@
 		<style>
 .leaflet-control-attribution { display: none !important; }
 </style>
-<!-- Leaflet Routing Machine CSS & JS -->
-<link rel="stylesheet" href="https://unpkg.com" />
-<script src="https://unpkg.com"></script>
-
-
 <script>
-  // Initialize routing control
-  var routingControl = L.Routing.control({
-    waypoints: [],
-    routeWhileDragging: true
-  }).addTo(map);
+  // 1. Load Routing CSS
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://' + '://unpkg.com';
+  document.head.appendChild(link);
 
-  // Array to store clicked points
-  var routePoints = [];
+  // 2. Load Routing JS
+  var script = document.createElement('script');
+  script.src = 'https://' + '://unpkg.com';
+  
+  // 3. Run Map Tool after loading
+  script.onload = function() {
+    var routingControl = L.Routing.control({
+      waypoints: [],
+      routeWhileDragging: true
+    }).addTo(map);
 
-  // Click event listener
-  map.on('click', function(e) {
-    if (routePoints.length < 2) {
-      routePoints.push(e.latlng); // Add point
-    } else {
-      routePoints = [e.latlng]; // Reset with new first point
-    }
-    routingControl.setWaypoints(routePoints);
-  });
+    var routePoints = [];
+
+    map.on('click', function(e) {
+      if (routePoints.length < 2) {
+        routePoints.push(e.latlng);
+      } else {
+        routePoints = [e.latlng];
+      }
+      routingControl.setWaypoints(routePoints);
+    });
+  };
+  document.head.appendChild(script);
+</script>
+
 </script>
 
 
