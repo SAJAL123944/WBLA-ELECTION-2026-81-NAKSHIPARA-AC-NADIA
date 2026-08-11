@@ -595,12 +595,10 @@
   var css = u + 'leaflet-routing-machine.css';
   var js = u + 'leaflet-routing-machine.js';
 
-  var l = document.createElement('link');
- l.rel = 'stylesheet';
-
-  l.href = css;
-
-  document.head.appendChild(l);
+ var linkTag = document.createElement('link');
+linkTag.rel = 'stylesheet';
+linkTag.href = css;
+document.head.appendChild(linkTag);
 
 
   var s = document.createElement('script');
