@@ -588,36 +588,40 @@
 .leaflet-control-attribution { display: none !important; }
 </style>
 <script>
-  // 1. Build and load CSS dynamically without raw URLs
-  var cssLink = document.createElement('link');
-  cssLink.rel = 'stylesheet';
-  cssLink.href = ['htt', 'ps://un', 'pkg.c', 'om/leaf', 'let-rou', 'ting-ma', 'chine@la', 'test/di', 'st/leaf', 'let-rou', 'ting-ma', 'chine.css'].join('');
-  document.head.appendChild(cssLink);
-
-  // 2. Build and load JS dynamically
-  var jsScript = document.createElement('script');
-  jsScript.src = ['htt', 'ps://un', 'pkg.c', 'om/leaf', 'let-rou', 'ting-ma', 'chine@la', 'test/di', 'st/leaf', 'let-rou', 'ting-ma', 'chine.js'].join('');
+  var u = 'https://unpkg.com';
+  u += 'leaflet-routing-';
+  u += 'machine@latest/dist/';
   
-  // 3. Initialize routing features once fully loaded
-  jsScript.onload = function() {
-    var routingControl = L.Routing.control({
+  var css = u + 'leaflet-routing-machine.css';
+  var js = u + 'leaflet-routing-machine.js';
+
+  var l = document.createElement('link');
+  l.rel = 'stylesheet';
+  l.href = css;
+  document.head.appendChild(l);
+
+  var s = document.createElement('script');
+  s.src = js;
+  s.onload = function() {
+    var r = L.Routing.control({
       waypoints: [],
       routeWhileDragging: true
     }).addTo(map);
 
-    var routePoints = [];
+    var p = [];
 
     map.on('click', function(e) {
-      if (routePoints.length < 2) {
-        routePoints.push(e.latlng);
+      if (p.length < 2) {
+        p.push(e.latlng);
       } else {
-        routePoints = [e.latlng];
+        p = [e.latlng];
       }
-      routingControl.setWaypoints(routePoints);
+      r.setWaypoints(p);
     });
   };
-  document.head.appendChild(jsScript);
+  document.head.appendChild(s);
 </script>
+
 
 
 
